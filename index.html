@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/e3790d9865.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="app">
+        <div class="row">
+          <div class="col">
+            <form class="search-form" id="search-form">
+              <input
+                type="search"
+                placeholder="Enter a city name"
+                class="form-control shadow-sm"
+                id="search-city"
+                autofocus="on"
+              />
+              <input
+                type="submit"
+                value="Search"
+                class="search-button shadow"
+              />
+            </form>
+            <span
+              ><button class="search-button shadow" id="current-location">
+                <i class="fa-solid fa-location-pin"></i></button
+            ></span>
+          </div>
+        </div>
+        <h1>
+          <span id="city"></span>
+          <span class="date-and-time" id="date-and-time"></span>
+        </h1>
+        <section>
+          <div class="row">
+            <div class="col-6 info">
+              <div class="weather" id="weather"></div>
+              <div class="wind" id="wind"></div>
+              <div class="humidity" id="humidity"></div>
+            </div>
+            <div class="col-6 degrees">
+              <span id="degrees"></span>
+              <a href="#" class="type-degrees selected" id="celsius-link">ºC</a
+              ><span class="separator"> |</span>
+              <a href="#" class="type-degrees" id="fahrenheit-link">ºF</a>
+              <span class="weather-icon">
+                <i class="fa-solid fa-cloud-sun"></i>
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col day-one">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Sunday</h5>
+                  <i class="fa-solid fa-cloud-sun weather-icons"></i>
+                  <p class="card-text" id="today"></p>
+                </div>
+              </div>
+            </div>
+            <div class="col day-two">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Monday</h5>
+                  <i class="fa-solid fa-cloud-sun weather-icons"></i>
+                  <p class="card-text">14ºC/6ºC</p>
+                </div>
+              </div>
+            </div>
+            <div class="col day-three">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Tuesday</h5>
+                  <i class="fa-solid fa-cloud-rain weather-icons"></i>
+                  <p class="card-text">13ºC/6ºC</p>
+                </div>
+              </div>
+            </div>
+            <div class="col day-four">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Wednesday</h5>
+                  <i class="fa-solid fa-cloud-sun weather-icons"></i>
+                  <p class="card-text">12ºC/4ºC</p>
+                </div>
+              </div>
+            </div>
+            <div class="col day-five">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Thursday</h5>
+                  <i class="fa-solid fa-cloud-sun weather-icons"></i>
+                  <p class="card-text">13ºC/5ºC</p>
+                </div>
+              </div>
+            </div>
+            <div class="col day-six">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Friday</h5>
+                  <i class="fa-solid fa-cloud-sun weather-icons"></i>
+                  <p class="card-text">12ºC/6ºC</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="src/app.js"></script>
+  </body>
+</html>
