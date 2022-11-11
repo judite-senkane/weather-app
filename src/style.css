@@ -108,6 +108,9 @@ section {
 .weather {
   font-size: 20px;
 }
+.weather::first-letter {
+  text-transform: capitalize;
+}
 .wind,
 .humidity {
   font-size: 12px;

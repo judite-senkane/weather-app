@@ -73,7 +73,7 @@ function retrieveTemperature(response) {
   document.querySelector(
     "#today"
   ).innerHTML = `${highTemperature}ºC/${lowTemperature}ºC`;
-  let weatherDescription = response.data.weather[0].main;
+  let weatherDescription = response.data.weather[0].description;
   let description = document.querySelector("#weather");
   description.innerHTML = weatherDescription;
   let windElement = document.querySelector("#wind");
