@@ -1,4 +1,5 @@
-function formatTime(date) {
+function formatTime(timestamp) {
+  let dateAndTime = document.querySelector("#date-and-time");
   let months = [
     "JAN",
     "FEB",
@@ -13,17 +14,17 @@ function formatTime(date) {
     "NOV",
     "DEC",
   ];
-  let month = date.getMonth();
-  let dateNumber = date.getDate();
-  let hours = date.getHours();
+  let month = timestamp.getMonth();
+  let dateNumber = timestamp.getDate();
+  let hours = timestamp.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = date.getMinutes();
+  let minutes = timestamp.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${months[month]} ${dateNumber}, ${hours}:${minutes}`;
+  dateAndTime.innerHTML = `${months[month]} ${dateNumber}, ${hours}:${minutes}`;
 }
 function handleSubmit(event) {
   event.preventDefault();
@@ -82,6 +83,9 @@ function retrieveTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let humidity = response.data.main.humidity;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
+  let timeUpdated = response.data.dt * 1000;
+  let date = new Date(timeUpdated);
+  formatTime(date);
 }
 function displayCurrent(event) {
   event.preventDefault();
@@ -94,10 +98,6 @@ function showCurrent(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(retrieveTemperature);
 }
-let dateAndTime = document.querySelector("#date-and-time");
-let currentDate = new Date();
-dateAndTime.innerHTML = formatTime(currentDate);
-
 let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", handleSubmit);
 
