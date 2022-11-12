@@ -5,7 +5,7 @@ body {
   margin: 0 auto;
 }
 h1 {
-  color: #66bfbf;
+  color: #f76b8a;
   margin-left: 0;
   margin-top: 20px;
 }
@@ -60,12 +60,12 @@ section {
   top: -21px;
 }
 .search-button {
-  background-color: #f76b8a;
+  background-color: #66bfbf;
   border-radius: 4px;
   transition: all 150ms ease;
   color: #fff;
   padding: 6px 9px;
-  border: 1px solid #f76b8a;
+  border: 1px solid #66bfbf;
 }
 .search-button:hover {
   background-color: #66bfbf;
@@ -78,7 +78,7 @@ section {
   margin: 0;
 }
 .form-control:focus {
-  border-color: #f76b8a;
+  border-color: #66bfbf;
 }
 
 .date-and-time {
