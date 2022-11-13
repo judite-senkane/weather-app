@@ -40,7 +40,7 @@ function showCity(city) {
 function displayCelsius(event) {
   event.preventDefault();
   let degrees = document.querySelector("#degrees");
-  degrees.innerHTML = "12";
+  degrees.innerHTML = celsiusTemperature;
   let fahrenheit = document.querySelector("#fahrenheit-link");
   fahrenheit.classList.remove("selected");
   let celsius = document.querySelector("#celsius-link");
@@ -49,26 +49,19 @@ function displayCelsius(event) {
 function displayFahrenheit(event) {
   event.preventDefault();
   let degrees = document.querySelector("#degrees");
-  degrees.innerHTML = "54";
+  degrees.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
   let fahrenheit = document.querySelector("#fahrenheit-link");
   fahrenheit.classList.add("selected");
   let celsius = document.querySelector("#celsius-link");
   celsius.classList.remove("selected");
 }
-function showCelsius(temperature) {
-  let degrees = document.querySelector("#degrees");
-  degrees.innerHTML = temperature;
-  let fahrenheit = document.querySelector("#fahrenheit-link");
-  fahrenheit.classList.remove("selected");
-  let celsius = document.querySelector("#celsius-link");
-  celsius.classList.add("selected");
-}
 function retrieveTemperature(response) {
   let h1 = document.querySelector("#city");
   let city = response.data.city;
   h1.innerHTML = `${city},`;
-  let temperature = Math.round(response.data.temperature.current);
-  showCelsius(temperature);
+  let degrees = document.querySelector("#degrees");
+  celsiusTemperature = Math.round(response.data.temperature.current);
+  degrees.innerHTML = celsiusTemperature;
   let weatherDescription = response.data.condition.description;
   let description = document.querySelector("#weather");
   description.innerHTML = weatherDescription;
@@ -105,6 +98,8 @@ celsiusLink.addEventListener("click", displayCelsius);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusTemperature = null;
 
 let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", displayCurrent);
