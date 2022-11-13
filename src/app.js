@@ -40,7 +40,7 @@ function showCity(city) {
 function displayCelsius(event) {
   event.preventDefault();
   let degrees = document.querySelector("#degrees");
-  degrees.innerHTML = celsiusTemperature;
+  degrees.innerHTML = Math.round(celsiusTemperature);
   let fahrenheit = document.querySelector("#fahrenheit-link");
   fahrenheit.classList.remove("selected");
   let celsius = document.querySelector("#celsius-link");
@@ -60,8 +60,8 @@ function retrieveTemperature(response) {
   let city = response.data.city;
   h1.innerHTML = `${city},`;
   let degrees = document.querySelector("#degrees");
-  celsiusTemperature = Math.round(response.data.temperature.current);
-  degrees.innerHTML = celsiusTemperature;
+  celsiusTemperature = response.data.temperature.current;
+  degrees.innerHTML = Math.round(celsiusTemperature);
   let weatherDescription = response.data.condition.description;
   let description = document.querySelector("#weather");
   description.innerHTML = weatherDescription;
