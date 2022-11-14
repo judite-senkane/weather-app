@@ -89,10 +89,6 @@ section {
   color: #f76b8a;
 }
 
-.search-bar {
-  margin: 0 0 0 5px;
-  padding: 0;
-}
 .weather {
   font-size: 20px;
 }
@@ -103,10 +99,7 @@ section {
 .humidity {
   font-size: 12px;
 }
-.forecast-icon {
-  font-size: 30px;
-  color: #eaf6f6;
-}
+
 .weather-forecast {
   padding: 20px 15px;
   margin: 0;
@@ -124,4 +117,5 @@ section {
 }
 .footer {
   margin: 0 0 20px 0;
+  font-size: 12px;
 }
