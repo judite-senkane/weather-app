@@ -96,10 +96,11 @@ function showCurrent(position) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(retrieveTemperature);
 }
-function displayForecast(response) {
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHtml = `<div class="row">`;
+function formatDay(timestamp) {
+  let date = new Date(timestamp);
+  let day = date.getDay();
   let days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
@@ -107,24 +108,37 @@ function displayForecast(response) {
     "Friday",
     "Saturday",
   ];
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
-        <div class="col weather-forecast">
-          <div class="weather-forecast-date">${day}</div>
-          <div class="forecast-icon">
-            <i class="fa-sharp fa-solid fa-cloud-sun"></i>
-          </div>
-
+  return days[day];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHtml = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `<div class="col weather-forecast">
+          <div class="weather-forecast-date">${formatDay(
+            forecastDay.time * 1000
+          )}</div>
+          <img src=${forecastDay.condition.icon_url} alt="${
+          forecastDay.condition.icon
+        }" class="forecast-icon" width="42"/>
           <div class="weather-forecast-temperatures">
-            <strong class="forecast-temperature-max"> 18ºC </strong>
-            <span class="forecast-temperature-min">6ºC</span>
+            <strong class="forecast-temperature-max"> ${Math.round(
+              forecastDay.temperature.maximum
+            )}ºC </strong>
+            <span class="forecast-temperature-min">${Math.round(
+              forecastDay.temperature.minimum
+            )}ºC</span>
           </div>
         </div>
       `;
+    }
   });
   forecastHtml = forecastHtml + `</div>`;
+  console.log(forecastHtml);
   forecastElement.innerHTML = forecastHtml;
 }
 let searchCity = document.querySelector("#search-form");
@@ -142,4 +156,3 @@ let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", displayCurrent);
 
 showCity("Paris");
-displayForecast();
