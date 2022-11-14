@@ -55,10 +55,16 @@ function displayFahrenheit(event) {
   let celsius = document.querySelector("#celsius-link");
   celsius.classList.remove("selected");
 }
+function getForecast(city) {
+  let apiKey = "f9feaa2306a84023f1oae3tfc99d5be3";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 function retrieveTemperature(response) {
   let h1 = document.querySelector("#city");
   let city = response.data.city;
   h1.innerHTML = `${city},`;
+  getForecast(city);
   let degrees = document.querySelector("#degrees");
   celsiusTemperature = response.data.temperature.current;
   degrees.innerHTML = Math.round(celsiusTemperature);
@@ -90,7 +96,7 @@ function showCurrent(position) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(retrieveTemperature);
 }
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = `<div class="row">`;
   let days = [
