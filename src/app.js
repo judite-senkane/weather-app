@@ -138,7 +138,6 @@ function displayForecast(response) {
     }
   });
   forecastHtml = forecastHtml + `</div>`;
-  console.log(forecastHtml);
   forecastElement.innerHTML = forecastHtml;
 }
 let searchCity = document.querySelector("#search-form");
