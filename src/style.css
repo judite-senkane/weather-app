@@ -89,17 +89,6 @@ section {
   color: #f76b8a;
 }
 
-.day-one,
-.day-two,
-.day-three,
-.day-four,
-.day-five,
-.day-six {
-  padding: 0;
-  margin: 0;
-  font-size: 11px;
-  text-align: center;
-}
 .search-bar {
   margin: 0 0 0 5px;
   padding: 0;
@@ -114,24 +103,24 @@ section {
 .humidity {
   font-size: 12px;
 }
-.weather-icons {
+.forecast-icon {
   font-size: 30px;
   color: #eaf6f6;
 }
-.card-body {
-  padding: 20px 7px;
+.weather-forecast {
+  padding: 15px 10px;
+  margin: 0;
+  font-size: 11px;
+  text-align: center;
+  background-color: #66bfbf;
 }
-.card-title {
+
+.weather-forecast-date {
   padding: 10px 0;
   font-weight: 600;
 }
-.card-text {
-  padding: 15px 0 0 0;
-}
-.card {
-  border: none;
-  border-radius: 0%;
-  background-color: #66bfbf;
+.forecast-temperature-max {
+  font-weight: 600;
 }
 .footer {
   margin: 0 0 20px 0;
