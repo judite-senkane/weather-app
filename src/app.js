@@ -90,6 +90,37 @@ function showCurrent(position) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(retrieveTemperature);
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHtml = `<div class="row">`;
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+        <div class="col weather-forecast">
+          <div class="weather-forecast-date">${day}</div>
+          <div class="forecast-icon">
+            <i class="fa-sharp fa-solid fa-cloud-sun"></i>
+          </div>
+
+          <div class="weather-forecast-temperatures">
+            <strong class="forecast-temperature-max"> 18ºC </strong>
+            <span class="forecast-temperature-min">6ºC</span>
+          </div>
+        </div>
+      `;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
 let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", handleSubmit);
 
@@ -105,3 +136,4 @@ let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", displayCurrent);
 
 showCity("Paris");
+displayForecast();
